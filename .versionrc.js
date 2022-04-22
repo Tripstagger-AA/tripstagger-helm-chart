@@ -3,8 +3,8 @@ const standardVersionUpdaterYaml = require.resolve("standard-version-updater-yam
 module.exports = {
   bumpFiles: [
     {
-      "filename": "package.json",
-      "type": "json"
+      filename: "package.json",
+      type: "json"
     },
     {
       filename: "tripstagger/Chart.yaml",
