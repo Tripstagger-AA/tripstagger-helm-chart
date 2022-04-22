@@ -4,6 +4,7 @@ bin/*
 .project
 /.bin
 /_test/secrets/*.json
+node_modules
 
 # OSX leaves these everywhere on SMB shares
 ._*
@@ -34,3 +35,4 @@ Session.vim
 **/charts/*.tgz
 
 .history
+/test
