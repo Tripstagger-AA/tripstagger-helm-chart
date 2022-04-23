@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.1.2...v0.1.3) (2022-04-23)
+
+
+### Features
+
+* **Release:** Allow updating client app version from github action ([9040893](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/904089309643bdf7e96baf78e19f984070f1239c))
+* **Release:** Commit component version ([67512bf](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/67512bf968fec0c156158a2dc188d9e748f3cbd0))
+* **Release:** Release new version of package on each change ([03d306b](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/03d306bde1b7252bfd33ad179e11797168237683))
+
 ### [0.1.2](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.1.1...v0.1.2) (2022-04-22)
 
 ### 0.1.1 (2022-04-22)
