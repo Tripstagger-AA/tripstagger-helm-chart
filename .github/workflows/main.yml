@@ -17,6 +17,15 @@ on:
         version:
           description: 'New version'
           required: true
+        type:
+          description: 'Type of the release'
+          required: true        
+          default: patch
+          type: choice
+          options:
+          - patch
+          - minor
+          - major
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
@@ -26,6 +35,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: PrepareNode
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.14.2'
       - name: setup python
         uses: actions/setup-python@v2
         with:
@@ -40,8 +53,15 @@ jobs:
       - name: Commit component version
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "feat(upgrade): App ${{ github.event.inputs.app}} Version ${{ github.event.inputs.version }}"
+          commit_message: "feat(upgrade): Update ${{ github.event.inputs.app}} to version ${{ github.event.inputs.version }}"
           file_pattern: tripstagger/values.yaml
           skip_fetch: true    
           skip_checkout: true
+      - uses: egordm/gha-yarn-node-cache@v1
+      - name: Install js packages
+        run: yarn install
+      - name: Release new version
+        run: yarn release@$type
+        env:
+          type: ${{ github.event.inputs.type }}
 
