@@ -50,6 +50,10 @@ jobs:
         env:
           app: ${{ github.event.inputs.app }}
           version: ${{ github.event.inputs.version }}
+      - name: setup git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Commit component version
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
