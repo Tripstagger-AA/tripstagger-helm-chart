@@ -32,6 +32,7 @@ jobs:
           python-version: 3.8 #install the python needed
       - name: Update component version
         run: |
+            pip install pyyaml
             python update-element-version.py $app $version
         env:
           app: ${{ github.event.inputs.app }}
