@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.5 (2022-04-24)
+
+
+### Features
+
+* **upgrade:** Update clientVersion to version 0.1.3 ([e2f4e64](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/e2f4e64659f9fbc540db4cf9c61e3f2ac9f5da51))
+
 ### 0.1.4 (2022-04-24)
 
 
