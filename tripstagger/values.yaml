@@ -1,4 +1,4 @@
-clientVersion: 0.1.3
+clientVersion: 0.1.5
 env: DEV
 imagePullSecrets: []
 client:
