@@ -32,6 +32,10 @@ on:
 jobs:
   release-change:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      repository-projects: write
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
