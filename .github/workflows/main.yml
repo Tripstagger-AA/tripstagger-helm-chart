@@ -94,5 +94,8 @@ jobs:
           helm package tripstagger
       - name: Publish chart
         run: |
-          helm plugin install https://github.com/chartmuseum/helm-push && helm push tripstagger-{{ steps.package-version.outputs.current-version }}.tgz {{ secrets.REGISTRY }}
+          helm plugin install https://github.com/chartmuseum/helm-push && helm push tripstagger-$version.tgz $registry
+        env: 
+          registry: ${{ secrets.REGISTRY }}
+          version: ${{ steps.package-version.outputs.current-version }}
 
