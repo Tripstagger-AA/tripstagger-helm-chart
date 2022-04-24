@@ -79,11 +79,10 @@ jobs:
           token_format: access_token
           workload_identity_provider: ${{ secrets.PROVIDER }}
           service_account: ${{ secrets.SERVICE_EMAIL }}
-      - name: Setup experimental helm oci for login
-        run: |
-          set HELM_EXPERIMENTAL_OCI=1
       - name: Login to Helm
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm registry login -u _json_key -p ${{ steps.auth.outputs.access_token }} https://europe-west3-docker.pkg.dev
+          exec: helm registry login -u oauth2accesstoken -p ${{ steps.auth.outputs.access_token }} https://europe-west3-docker.pkg.dev
+        env: 
+          HELM_EXPERIMENTAL_OCI: 1
 
