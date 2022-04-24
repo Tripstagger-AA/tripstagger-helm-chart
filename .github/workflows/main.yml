@@ -82,10 +82,6 @@ jobs:
           token_format: access_token
           workload_identity_provider: ${{ secrets.PROVIDER }}
           service_account: ${{ secrets.SERVICE_EMAIL }}
-      - name: Install Push Plugin
-        uses: WyriHaximus/github-action-helm3@v2
-        with:
-          exec: helm plugin install https://github.com/chartmuseum/helm-push
       - name: Login to Helm
         uses: WyriHaximus/github-action-helm3@v2
         with:
@@ -99,5 +95,5 @@ jobs:
       - name: Publish chart
         uses: WyriHaximus/github-action-helm3@v2
         with:
-          exec: helm push tripstagger-{{ steps.package-version.outputs.current-version }}.tgz {{ secrets.REGISTRY }}
+          exec: helm plugin install https://github.com/chartmuseum/helm-push && helm push tripstagger-{{ steps.package-version.outputs.current-version }}.tgz {{ secrets.REGISTRY }}
 
