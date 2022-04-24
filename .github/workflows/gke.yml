@@ -1,0 +1,57 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release to GKE
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+jobs:
+  deploy-to-gke:
+    name: Deploy to gke
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get Package Version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+      - id: docker_auth
+        name: Get Token For GCP Artifact Registry
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.DOCKER_PROVIDER }}
+          service_account: ${{ secrets.DOCKER_SERVICE_EMAIL }}
+      - name: install helm
+        uses: Azure/setup-helm@v1
+      - name: Login to Helm
+        run: |
+          helm registry login -u oauth2accesstoken -p ${{ steps.docker_auth.outputs.access_token }} ${{ secrets.GCR_REGION }}
+        env: 
+          HELM_EXPERIMENTAL_OCI: 1
+      - name: Download chart
+        run: |
+          helm pull $registry/tripstagger --version $version
+        env: 
+          registry: ${{ secrets.REGISTRY }}
+          version: ${{ steps.package-version.outputs.current-version }}
+      - id: 'gke_auth'
+        name: Get Token For GKE 
+        uses: 'google-github-actions/auth@v0'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: ${{ secrets.GKE_PROVIDER }}
+          service_account: ${{ secrets.GKE_SERVICE_EMAIL }}
+      - name: Set up GKE credentials
+        uses: google-github-actions/get-gke-credentials@v0
+        with:
+          cluster_name: ${{ secrets.GKE_CLUSTER }}
+          location: ${{ secrets.GKE_ZONE }}
+
+

@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Publish Chart
 
 # Controls when the workflow will run
 on:
@@ -31,6 +31,7 @@ on:
 
 jobs:
   release-change:
+    name: Update ${{ github.event.inputs.app}} to version ${{ github.event.inputs.version }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -86,7 +87,7 @@ jobs:
         uses: Azure/setup-helm@v1
       - name: Login to Helm
         run: |
-          helm registry login -u oauth2accesstoken -p ${{ steps.auth.outputs.access_token }} https://europe-west3-docker.pkg.dev
+          helm registry login -u oauth2accesstoken -p ${{ steps.auth.outputs.access_token }} ${{ secrets.GCR_REGION }}
         env: 
           HELM_EXPERIMENTAL_OCI: 1
       - name: Package chart
@@ -98,4 +99,5 @@ jobs:
         env: 
           registry: ${{ secrets.REGISTRY }}
           version: ${{ steps.package-version.outputs.current-version }}
+        
 
