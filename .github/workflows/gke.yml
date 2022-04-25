@@ -12,7 +12,38 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
 jobs:
+  publish-chart:
+    name: Publish chart
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Package Version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+      - id: auth
+        name: Get Token For GCP Artifact Registry
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.PROVIDER }}
+          service_account: ${{ secrets.SERVICE_EMAIL }}
+      - name: install helm
+        uses: Azure/setup-helm@v1
+      - name: Login to Helm
+        run: |
+          helm registry login -u oauth2accesstoken -p ${{ steps.auth.outputs.access_token }} ${{ secrets.GCR_REGION }}
+        env: 
+          HELM_EXPERIMENTAL_OCI: 1
+      - name: Package chart
+        run: |
+          helm package tripstagger
+      - name: Publish chart
+        run: |
+          helm plugin install https://github.com/chartmuseum/helm-push && helm push tripstagger-$version.tgz $registry
+        env: 
+          registry: ${{ secrets.REGISTRY }}
+          version: ${{ steps.package-version.outputs.current-version }}
   deploy-to-gke:
+    needs: publish-chart
     name: Deploy to gke
     runs-on: ubuntu-latest
     permissions:
