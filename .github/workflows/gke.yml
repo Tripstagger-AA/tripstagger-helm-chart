@@ -53,5 +53,8 @@ jobs:
         with:
           cluster_name: ${{ secrets.GKE_CLUSTER }}
           location: ${{ secrets.GKE_ZONE }}
+      - name: Publish to GKE
+        run: |
+          helm install tripstagger ./tripstagger-$version.tgz --create-namespace --namespace tripstagger
 
 
