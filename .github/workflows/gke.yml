@@ -19,6 +19,8 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Get Package Version
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
