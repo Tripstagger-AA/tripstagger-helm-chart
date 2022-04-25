@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.1.6...v0.2.0) (2022-04-25)
+
+
+### Features
+
+* **Release:** Pull chart and login to gke ([bc667f8](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/bc667f80632f4fdc1dd2dfedf58ca522284c53b0))
+* **Release:** Release helm chart to gke ([f8ca6ab](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/f8ca6ab604dba188db3da9157793f60e48c428eb))
+* **Release:** Release on tag push ([adb71c7](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/adb71c78d804b9ab54effd297d81cb333171ec69))
+
 ### 0.1.6 (2022-04-24)
 
 
