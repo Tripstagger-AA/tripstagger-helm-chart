@@ -94,7 +94,7 @@ jobs:
           location: ${{ secrets.GKE_ZONE }}
       - name: Publish to GKE
         run: |
-          chmod 600 $KUBECONFIG && helm install tripstagger ./tripstagger-$version.tgz --create-namespace --namespace tripstagger
+          chmod 600 $KUBECONFIG && helm upgrade --install tripstagger ./tripstagger-$version.tgz --create-namespace --namespace tripstagger
         env: 
           version: ${{ steps.package-version.outputs.current-version }}
 
