@@ -55,6 +55,6 @@ jobs:
           location: ${{ secrets.GKE_ZONE }}
       - name: Publish to GKE
         run: |
-          helm install tripstagger ./tripstagger-$version.tgz --create-namespace --namespace tripstagger
+          chmod 600 $KUBECONFIG && helm install tripstagger ./tripstagger-$version.tgz --create-namespace --namespace tripstagger
 
 
