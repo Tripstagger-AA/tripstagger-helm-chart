@@ -15,6 +15,9 @@ jobs:
   publish-chart:
     name: Publish chart
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Get Package Version
         id: package-version
