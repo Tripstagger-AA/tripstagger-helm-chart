@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.3.0...v0.3.1) (2022-04-26)
+
+
+### Bug Fixes
+
+* **VirtualService:** Fix client service type ([93c1dda](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/93c1dda6f3ea41c90c5add54bbf2705b6d9f5217))
+
 ## [0.3.0](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.2.2...v0.3.0) (2022-04-26)
 
 
