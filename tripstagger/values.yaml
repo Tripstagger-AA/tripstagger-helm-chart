@@ -1,7 +1,9 @@
 clientVersion: 0.1.5
-env: DEV
+env: TEST
+namespace: tripstagger
 imagePullSecrets: []
 client:
+  testUrl: test.tripstagger.com
   name: tripstagger-client
   pullPolicy: IfNotPresent
   replicas: 2
@@ -11,5 +13,11 @@ client:
     requests:
       cpu: 1000m
       memory: 2G
+ingress: 
+    tls: 
+      - secretName: chart-example-tls
+        hosts:
+          - test.tripstagger.com
+
 tier:
   frontend: frontend

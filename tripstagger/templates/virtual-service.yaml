@@ -1,0 +1,23 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: default
+spec:
+  virtualHost:
+    domains:
+    - "{{ .Values.client.testUrl }}"
+    routes:
+    - matchers:
+      # l7-xlb-basic-check-http is using the root path for health checking
+      - prefix: /
+      options:
+        # Because the cluster uses spot nodes that can be shut down at any time, having a retry mechanism
+        # is a good idea in case the pod/node shutdown process isn't clean leaving the possibility of request failures
+        retries:
+          retryOn: 'connect-failure'
+          numRetries: 3
+          perTryTimeout: '1s'
+      routeAction:
+        single:
+          upstream:
+            name: "{{ .Values.namespace }}-{{ .Values.client.name }}-80"
