@@ -91,4 +91,4 @@ spec:
   selector:
     app: {{ .Values.client.name }}
   sessionAffinity: None
-  type: ClusterIp
+  type: ClusterIP
