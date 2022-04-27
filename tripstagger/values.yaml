@@ -1,4 +1,4 @@
-clientVersion: 0.1.5
+clientVersion: 0.1.6
 env: TEST
 namespace: tripstagger
 imagePullSecrets: []
@@ -13,11 +13,10 @@ client:
     requests:
       cpu: 1000m
       memory: 2G
-ingress: 
-    tls: 
-      - secretName: chart-example-tls
-        hosts:
-          - test.tripstagger.com
-
+ingress:
+  tls:
+  - secretName: chart-example-tls
+    hosts:
+    - test.tripstagger.com
 tier:
   frontend: frontend
