@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.4](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.3.3...v0.3.4) (2022-04-27)
+
+
+### Bug Fixes
+
+* **VirtualService:** Put in the gloo namespace ([4bc21fb](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/4bc21fb2a03e3240e1464cc8dd57d44e9d46a2a6))
+
 ### [0.3.3](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.3.2...v0.3.3) (2022-04-27)
 
 
