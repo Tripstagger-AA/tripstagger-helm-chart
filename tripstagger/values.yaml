@@ -13,10 +13,7 @@ client:
     requests:
       cpu: 1000m
       memory: 2G
-ingress:
-  tls:
-  - secretName: chart-example-tls
-    hosts:
-    - tripstagger.com
 tier:
   frontend: frontend
+loadbalancer:
+  namespace: gloo-system
