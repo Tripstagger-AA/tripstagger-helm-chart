@@ -3,7 +3,7 @@ env: TEST
 namespace: tripstagger
 imagePullSecrets: []
 client:
-  testUrl: test.tripstagger.com
+  url: tripstagger.com
   name: tripstagger-client
   pullPolicy: IfNotPresent
   replicas: 2
@@ -17,6 +17,6 @@ ingress:
   tls:
   - secretName: chart-example-tls
     hosts:
-    - test.tripstagger.com
+    - tripstagger.com
 tier:
   frontend: frontend
