@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.3.4...v0.3.5) (2022-05-08)
+
+
+### Bug Fixes
+
+* **VirtualService:** Use wildcart host for app proxied with cloudflare ([996404d](https://github.com/Tripstagger-AA/tripstagger-helm-chart/commit/996404dbe4175a905386879e65da81d25952f9dc))
+
 ### [0.3.4](https://github.com/Tripstagger-AA/tripstagger-helm-chart/compare/v0.3.3...v0.3.4) (2022-04-27)
 
 
