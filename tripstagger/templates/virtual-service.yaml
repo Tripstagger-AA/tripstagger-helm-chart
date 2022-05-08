@@ -6,7 +6,7 @@ metadata:
 spec:
   virtualHost:
     domains:
-    - "{{ .Values.client.url }}"
+    - "*"
     routes:
     - matchers:
       # l7-xlb-basic-check-http is using the root path for health checking
